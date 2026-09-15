@@ -1,0 +1,74 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
+
+/*
+ * Strong ease-out curve (from Emil Kowalski's design engineering philosophy).
+ * Starts fast → settles slowly. Feels responsive, not sluggish.
+ */
+const EASE = [0.23, 1, 0.32, 1];
+
+export default function Hero() {
+  const reduceMotion = useReducedMotion();
+
+  /** Returns Motion props for a staggered fade-up reveal. */
+  const reveal = (delay = 0) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 20 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.7, delay, ease: EASE },
+        };
+
+  return (
+    <section className="flex min-h-[100dvh] flex-col justify-center px-5 sm:px-8 md:px-12 lg:px-24">
+      <div className="mx-auto w-full max-w-[1400px]">
+
+        {/* ── Name ── */}
+        <motion.h1
+          className="font-display text-[clamp(2.75rem,9vw,7.5rem)] font-semibold leading-[0.9] tracking-[-0.04em]"
+          {...reveal(0)}
+        >
+          Joseph Orji
+        </motion.h1>
+
+        {/* ── Role ── */}
+        <motion.p
+          className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-text-muted md:mt-6 md:text-xs"
+          {...reveal(0.12)}
+        >
+          Backend Engineer
+        </motion.p>
+
+        {/* ── Tagline ── */}
+        <motion.p
+          className="mt-4 max-w-[48ch] text-[15px] leading-relaxed text-text-muted md:mt-5 md:text-lg"
+          {...reveal(0.24)}
+        >
+          One year in, still hooked. Building things, breaking things,
+          occasionally fixing them.
+        </motion.p>
+
+        {/* ── CTAs ── */}
+        <motion.div
+          className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4 md:mt-10"
+          {...reveal(0.38)}
+        >
+          <a
+            href="#contact"
+            className="inline-flex h-12 items-center justify-center rounded-lg bg-accent px-7 text-sm font-medium text-bg transition-transform duration-150 active:scale-[0.97]"
+          >
+            Contact Me
+          </a>
+          <a
+            href="#projects"
+            className="inline-flex h-12 items-center justify-center rounded-lg border border-accent-dim/30 px-7 text-sm font-medium text-accent transition-[transform,border-color,background-color] duration-150 hover:border-accent/50 hover:bg-accent/[0.04] active:scale-[0.97]"
+          >
+            Explore Projects
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
