@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import ContactModal from "@/components/ContactModal";
 
 /*
  * Strong ease-out curve (from Emil Kowalski's design engineering philosophy).
@@ -9,6 +11,7 @@ import { motion, useReducedMotion } from "motion/react";
 const EASE = [0.23, 1, 0.32, 1];
 
 export default function Hero() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const reduceMotion = useReducedMotion();
 
   /** Returns Motion props for a staggered fade-up reveal. */
@@ -55,12 +58,13 @@ export default function Hero() {
           className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4 md:mt-10"
           {...reveal(0.38)}
         >
-          <a
-            href="#contact"
-            className="inline-flex h-12 items-center justify-center rounded-lg bg-accent px-7 text-sm font-medium text-bg transition-transform duration-150 active:scale-[0.97]"
+          <button
+            type="button"
+            onClick={() => setIsContactModalOpen(true)}
+            className="inline-flex h-12 items-center justify-center rounded-lg bg-accent px-7 text-sm font-medium text-bg transition-transform duration-150 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
             Contact Me
-          </a>
+          </button>
           <a
             href="#projects"
             className="inline-flex h-12 items-center justify-center rounded-lg border border-accent-dim/30 px-7 text-sm font-medium text-accent transition-[transform,border-color,background-color] duration-150 hover:border-accent/50 hover:bg-accent/[0.04] active:scale-[0.97]"
@@ -69,6 +73,12 @@ export default function Hero() {
           </a>
         </motion.div>
       </div>
+
+      {/* ── Contact Modal Dialog ── */}
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+      />
     </section>
   );
 }
