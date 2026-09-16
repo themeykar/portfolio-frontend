@@ -65,26 +65,34 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="flex min-h-[100dvh] flex-col justify-center px-5 py-24 sm:px-8 md:px-12 md:py-32 lg:px-24"
+      className="flex min-h-[100dvh] snap-start snap-always flex-col justify-center px-5 py-24 sm:px-8 md:px-12 md:py-32 lg:px-24"
     >
       <div className="mx-auto w-full max-w-[1400px]">
         <div className="mx-auto max-w-4xl lg:max-w-5xl">
           {/* ── Section Heading: Projects (General Sans display treatment matching About & Stack) ── */}
-          <motion.div
-            className="mb-12 flex items-center gap-3.5 sm:mb-14 sm:gap-4 md:mb-16"
-            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.5, ease: EASE }}
-          >
-            <div
+          <div className="mb-12 flex items-center gap-3.5 sm:mb-14 sm:gap-4 md:mb-16">
+            <motion.div
               aria-hidden="true"
-              className="h-7 w-[2px] shrink-0 rounded-full bg-accent sm:h-8 md:h-11"
+              className="h-7 w-[2px] shrink-0 origin-top rounded-full bg-accent sm:h-8 md:h-11"
+              initial={reduceMotion ? false : { scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, ease: EASE }}
             />
-            <h2 className="font-display text-3xl font-semibold tracking-[-0.03em] text-text sm:text-4xl md:text-5xl">
+            <motion.h2
+              className="font-display text-3xl font-semibold tracking-[-0.03em] text-text sm:text-4xl md:text-5xl"
+              initial={reduceMotion ? false : { opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.45,
+                delay: reduceMotion ? 0 : 0.08,
+                ease: EASE,
+              }}
+            >
               Projects
-            </h2>
-          </motion.div>
+            </motion.h2>
+          </div>
 
           {/* ── 3-Column Grid on Desktop, 1-Column on Mobile ── */}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-5 lg:gap-6">
@@ -92,17 +100,17 @@ export default function Projects() {
               <motion.article
                 key={project.name}
                 className="group flex flex-col justify-between rounded-xl border-t-2 border-accent bg-surface/50 p-6 transition-[background-color,box-shadow,border-color] duration-200 hover:bg-surface-alt/40 hover:shadow-lg hover:shadow-black/30 sm:p-7"
-                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 38, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.15, margin: "0px 0px -50px 0px" }}
                 whileHover={
                   reduceMotion
                     ? undefined
                     : { y: -4, transition: { duration: 0.2, ease: EASE } }
                 }
                 transition={{
-                  duration: 0.5,
-                  delay: reduceMotion ? 0 : index * 0.08,
+                  duration: 0.55,
+                  delay: reduceMotion ? 0 : index * 0.12,
                   ease: EASE,
                 }}
               >

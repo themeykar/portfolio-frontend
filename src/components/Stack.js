@@ -52,7 +52,7 @@ export default function Stack() {
   return (
     <section
       id="stack"
-      className="flex min-h-[100dvh] flex-col justify-center px-5 py-24 sm:px-8 md:px-12 md:py-32 lg:px-24"
+      className="flex min-h-[100dvh] snap-start snap-always flex-col justify-center px-5 py-24 sm:px-8 md:px-12 md:py-32 lg:px-24"
     >
       <div className="mx-auto w-full max-w-[1400px]">
         <div className="mx-auto max-w-4xl lg:max-w-5xl">
@@ -73,37 +73,45 @@ export default function Stack() {
               <motion.div
                 key={cluster.category}
                 className="grid grid-cols-1 items-start gap-4 sm:gap-5 md:grid-cols-12 md:gap-10 lg:gap-14"
-                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 44 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.15, margin: "0px 0px -50px 0px" }}
                 transition={{
-                  duration: 0.5,
-                  delay: reduceMotion ? 0 : index * 0.08,
+                  duration: 0.55,
+                  delay: reduceMotion ? 0 : index * 0.14,
                   ease: EASE,
                 }}
               >
                 {/* ── Left column: Mono sub-label + Accent mark ── */}
                 <div className="flex items-center gap-2.5 sm:gap-3 md:col-span-5">
-                  <div
+                  <motion.div
                     aria-hidden="true"
-                    className="h-3 w-[2px] shrink-0 rounded-full bg-accent sm:h-3.5"
+                    className="h-3 w-[2px] shrink-0 origin-top rounded-full bg-accent sm:h-3.5"
+                    initial={reduceMotion ? false : { scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{
+                      duration: 0.4,
+                      delay: reduceMotion ? 0 : index * 0.14 + 0.06,
+                      ease: EASE,
+                    }}
                   />
                   <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-text-muted md:text-xs">
                     {cluster.category}
                   </h3>
                 </div>
 
-                {/* ── Right column: Technology badges with subtle stagger ── */}
+                {/* ── Right column: Technology badges with tactile scale-settle stagger ── */}
                 <div className="flex flex-wrap gap-2 sm:gap-2.5 md:col-span-7">
                   {cluster.skills.map((skill, sIdx) => (
                     <motion.span
                       key={skill}
-                      initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
+                      initial={reduceMotion ? false : { opacity: 0, y: 12, scale: 0.94 }}
+                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                      viewport={{ once: true, amount: 0.15 }}
                       transition={{
                         duration: 0.35,
-                        delay: reduceMotion ? 0 : 0.03 * sIdx,
+                        delay: reduceMotion ? 0 : index * 0.1 + 0.025 * sIdx,
                         ease: EASE,
                       }}
                       className="inline-flex items-center rounded-md border border-surface-alt bg-surface/70 px-3 py-1.5 font-mono text-xs text-text transition-[transform,border-color,background-color,color] duration-150 hover:border-accent-dim/50 hover:bg-surface-alt hover:text-accent active:scale-[0.97] sm:text-[13px]"

@@ -27,7 +27,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex min-h-[100dvh] flex-col justify-center px-5 pt-16 sm:px-8 sm:pt-18 md:px-12 md:pt-0 lg:px-24"
+      className="flex min-h-[100dvh] snap-start flex-col justify-center px-5 pt-16 sm:px-8 sm:pt-18 md:px-12 md:pt-0 lg:px-24"
     >
       <div className="mx-auto w-full max-w-[1400px]">
 

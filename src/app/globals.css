@@ -34,6 +34,21 @@
 html {
   background-color: var(--color-bg);
   color: var(--color-text);
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 4rem; /* 64px on mobile (matches h-16 navbar) */
+}
+
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 4.5rem; /* 72px on sm+ (matches h-18 navbar) */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
