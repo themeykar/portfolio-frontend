@@ -36,10 +36,10 @@ export default function Contact() {
           {/* ── Section Heading: Contact (General Sans display treatment matching established pattern) ── */}
           <motion.div
             className="mb-8 flex items-center gap-3.5 sm:mb-10 sm:gap-4 md:mb-12"
-            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: EASE }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.5, ease: EASE }}
           >
             <div
               aria-hidden="true"
@@ -53,11 +53,11 @@ export default function Contact() {
           {/* ── Invitation copy (Inter body) ── */}
           <motion.p
             className="max-w-[54ch] text-base leading-relaxed text-text-muted md:text-lg md:leading-[1.8]"
-            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.25 }}
             transition={{
-              duration: 0.7,
+              duration: 0.5,
               delay: reduceMotion ? 0 : 0.08,
               ease: EASE,
             }}
@@ -69,11 +69,11 @@ export default function Contact() {
           {/* ── Contact Links Row (text-based, no logo icons) ── */}
           <motion.div
             className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4 md:mt-10"
-            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.25 }}
             transition={{
-              duration: 0.7,
+              duration: 0.5,
               delay: reduceMotion ? 0 : 0.16,
               ease: EASE,
             }}
@@ -81,7 +81,7 @@ export default function Contact() {
             {/* Primary Contact: Email */}
             <a
               href="mailto:workwithorjiemeka07@gmail.com"
-              className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-accent px-5 font-mono text-xs font-medium text-bg transition-[transform,opacity] duration-150 hover:opacity-90 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:w-auto sm:text-sm"
+              className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-accent px-5 font-mono text-xs font-medium text-bg transition-[transform,opacity,filter] duration-150 hover:opacity-90 hover:brightness-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:w-auto sm:text-sm"
             >
               <span className="truncate">workwithorjiemeka07@gmail.com</span>
               <span aria-hidden="true" className="text-xs">→</span>
@@ -95,7 +95,7 @@ export default function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 flex-1 items-center justify-center gap-1.5 rounded-lg border border-surface-alt bg-surface/60 px-4 font-mono text-xs font-medium text-text transition-[transform,border-color,background-color,color] duration-150 hover:border-accent-dim/50 hover:bg-surface-alt hover:text-accent active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:flex-none sm:text-sm"
+                  className="inline-flex h-11 flex-1 items-center justify-center gap-1.5 rounded-lg border border-surface-alt bg-surface/60 px-4 font-mono text-xs font-medium text-text transition-[transform,border-color,background-color,color,filter] duration-150 hover:border-accent-dim/50 hover:bg-surface-alt hover:text-accent hover:brightness-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:flex-none sm:text-sm"
                 >
                   <span>{link.label}</span>
                   <span aria-hidden="true" className="text-xs text-text-muted">↗</span>

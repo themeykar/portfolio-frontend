@@ -38,10 +38,10 @@ export default function SectionLayout({
           {/* ── Left column: Display heading + Proportionate accent mark ── */}
           <motion.div
             className="flex items-start md:col-span-4"
-            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: EASE }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.5, ease: EASE }}
           >
             <div className="flex items-center gap-3.5 sm:gap-4">
               <div
@@ -57,12 +57,12 @@ export default function SectionLayout({
           {/* ── Right column: Section content ── */}
           <motion.div
             className="md:col-span-8"
-            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.25 }}
             transition={{
-              duration: 0.7,
-              delay: reduceMotion ? 0 : 0.1,
+              duration: 0.5,
+              delay: reduceMotion ? 0 : 0.08,
               ease: EASE,
             }}
           >

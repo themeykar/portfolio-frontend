@@ -72,10 +72,10 @@ export default function Projects() {
           {/* ── Section Heading: Projects (General Sans display treatment matching About & Stack) ── */}
           <motion.div
             className="mb-12 flex items-center gap-3.5 sm:mb-14 sm:gap-4 md:mb-16"
-            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: EASE }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.5, ease: EASE }}
           >
             <div
               aria-hidden="true"
@@ -91,13 +91,18 @@ export default function Projects() {
             {PROJECTS_DATA.map((project, index) => (
               <motion.article
                 key={project.name}
-                className="group flex flex-col justify-between rounded-xl border-t-2 border-accent bg-surface/50 p-6 transition-colors duration-200 hover:bg-surface-alt/40 sm:p-7"
-                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                className="group flex flex-col justify-between rounded-xl border-t-2 border-accent bg-surface/50 p-6 transition-[background-color,box-shadow,border-color] duration-200 hover:bg-surface-alt/40 hover:shadow-lg hover:shadow-black/30 sm:p-7"
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
+                whileHover={
+                  reduceMotion
+                    ? undefined
+                    : { y: -4, transition: { duration: 0.2, ease: EASE } }
+                }
                 transition={{
-                  duration: 0.6,
-                  delay: reduceMotion ? 0 : 0.08 + index * 0.08,
+                  duration: 0.5,
+                  delay: reduceMotion ? 0 : index * 0.08,
                   ease: EASE,
                 }}
               >
@@ -131,12 +136,12 @@ export default function Projects() {
                 </div>
 
                 {/* Actionable Live Link Button */}
-                <div className="mt-8 pt-4 border-t border-surface-alt/40">
+                <div className="mt-8 border-t border-surface-alt/40 pt-4">
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-9 items-center justify-center gap-1.5 rounded-lg border border-accent-dim/30 bg-accent/[0.04] px-4 font-mono text-xs font-medium text-accent transition-[transform,border-color,background-color] duration-150 hover:border-accent/60 hover:bg-accent/[0.08] active:scale-[0.97]"
+                    className="inline-flex h-9 items-center justify-center gap-1.5 rounded-lg border border-accent-dim/30 bg-accent/[0.04] px-4 font-mono text-xs font-medium text-accent transition-[transform,border-color,background-color,color,filter] duration-150 hover:border-accent/60 hover:bg-accent/[0.08] hover:brightness-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   >
                     <span>Live Project</span>
                     <span aria-hidden="true" className="text-[13px]">↗</span>

@@ -56,14 +56,8 @@ export default function Stack() {
     >
       <div className="mx-auto w-full max-w-[1400px]">
         <div className="mx-auto max-w-4xl lg:max-w-5xl">
-          {/* ── Section Heading: Stack (General Sans display treatment matching About) ── */}
-          <motion.div
-            className="mb-12 flex items-center gap-3.5 sm:mb-14 sm:gap-4 md:mb-16"
-            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: EASE }}
-          >
+          {/* ── Section Heading: Stack (static heading per rule 6) ── */}
+          <div className="mb-12 flex items-center gap-3.5 sm:mb-14 sm:gap-4 md:mb-16">
             <div
               aria-hidden="true"
               className="h-7 w-[2px] shrink-0 rounded-full bg-accent sm:h-8 md:h-11"
@@ -71,7 +65,7 @@ export default function Stack() {
             <h2 className="font-display text-3xl font-semibold tracking-[-0.03em] text-text sm:text-4xl md:text-5xl">
               Stack
             </h2>
-          </motion.div>
+          </div>
 
           {/* ── Clusters container ── */}
           <div className="space-y-10 sm:space-y-12 md:space-y-14">
@@ -79,12 +73,12 @@ export default function Stack() {
               <motion.div
                 key={cluster.category}
                 className="grid grid-cols-1 items-start gap-4 sm:gap-5 md:grid-cols-12 md:gap-10 lg:gap-14"
-                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{
-                  duration: 0.6,
-                  delay: reduceMotion ? 0 : 0.08 + index * 0.08,
+                  duration: 0.5,
+                  delay: reduceMotion ? 0 : index * 0.08,
                   ease: EASE,
                 }}
               >
@@ -99,15 +93,23 @@ export default function Stack() {
                   </h3>
                 </div>
 
-                {/* ── Right column: Technology badges ── */}
+                {/* ── Right column: Technology badges with subtle stagger ── */}
                 <div className="flex flex-wrap gap-2 sm:gap-2.5 md:col-span-7">
-                  {cluster.skills.map((skill) => (
-                    <span
+                  {cluster.skills.map((skill, sIdx) => (
+                    <motion.span
                       key={skill}
-                      className="inline-flex items-center rounded-md border border-surface-alt bg-surface/70 px-3 py-1.5 font-mono text-xs text-text transition-[border-color,background-color,color] duration-150 hover:border-accent-dim/50 hover:bg-surface-alt hover:text-accent sm:text-[13px]"
+                      initial={reduceMotion ? false : { opacity: 0, y: 8 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{
+                        duration: 0.35,
+                        delay: reduceMotion ? 0 : 0.03 * sIdx,
+                        ease: EASE,
+                      }}
+                      className="inline-flex items-center rounded-md border border-surface-alt bg-surface/70 px-3 py-1.5 font-mono text-xs text-text transition-[transform,border-color,background-color,color] duration-150 hover:border-accent-dim/50 hover:bg-surface-alt hover:text-accent active:scale-[0.97] sm:text-[13px]"
                     >
                       {skill}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
               </motion.div>

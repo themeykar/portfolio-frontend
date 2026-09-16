@@ -61,13 +61,13 @@ export default function Hero() {
           <button
             type="button"
             onClick={() => setIsContactModalOpen(true)}
-            className="inline-flex h-12 items-center justify-center rounded-lg bg-accent px-7 text-sm font-medium text-bg transition-transform duration-150 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            className="inline-flex h-12 cursor-pointer items-center justify-center rounded-lg bg-accent px-7 text-sm font-medium text-bg transition-[transform,opacity,filter] duration-150 hover:opacity-90 hover:brightness-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
             Contact Me
           </button>
           <a
             href="#projects"
-            className="inline-flex h-12 items-center justify-center rounded-lg border border-accent-dim/30 px-7 text-sm font-medium text-accent transition-[transform,border-color,background-color] duration-150 hover:border-accent/50 hover:bg-accent/[0.04] active:scale-[0.97]"
+            className="inline-flex h-12 items-center justify-center rounded-lg border border-accent-dim/30 px-7 text-sm font-medium text-accent transition-[transform,border-color,background-color,color,filter] duration-150 hover:border-accent/50 hover:bg-accent/[0.04] hover:brightness-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
             Explore Projects
           </a>

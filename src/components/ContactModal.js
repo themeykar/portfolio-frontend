@@ -66,42 +66,40 @@ export default function ContactModal({ isOpen, onClose }) {
   return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-          {/* ── Backdrop Overlay (Semi-transparent dark overlay, no blur) ── */}
+        <motion.div
+          key="contact-modal-overlay"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+        >
+          {/* ── Backdrop Overlay motion.div (Semi-transparent dark overlay, no blur) ── */}
           <motion.div
+            key="contact-modal-backdrop"
             aria-hidden="true"
             className="fixed inset-0 bg-black/75"
             onClick={onClose}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1 },
+            }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
           />
 
-          {/* ── Modal Card ── */}
+          {/* ── Modal Card motion.div ── */}
           <motion.div
+            key="contact-modal-card"
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-modal-title"
             aria-describedby="contact-modal-desc"
             onClick={(e) => e.stopPropagation()}
             className="relative z-10 max-h-[90dvh] w-full max-w-lg overflow-y-auto rounded-xl border border-surface-alt bg-surface p-6 shadow-2xl sm:p-8"
-            initial={
-              reduceMotion
-                ? { opacity: 0 }
-                : { opacity: 0, scale: 0.96, y: 6 }
-            }
-            animate={
-              reduceMotion
-                ? { opacity: 1 }
-                : { opacity: 1, scale: 1, y: 0 }
-            }
-            exit={
-              reduceMotion
-                ? { opacity: 0 }
-                : { opacity: 0, scale: 0.97, y: 4 }
-            }
-            transition={{ duration: 0.2, ease: EASE }}
+            variants={{
+              hidden: { opacity: 0, scale: 0.95 },
+              visible: { opacity: 1, scale: 1 },
+            }}
+            transition={{ duration: 0.22, ease: EASE }}
           >
             {/* Header: Title + Close Control */}
             <div className="flex items-center justify-between gap-4">
@@ -114,7 +112,7 @@ export default function ContactModal({ isOpen, onClose }) {
                   id="contact-modal-title"
                   className="font-display text-2xl font-semibold tracking-[-0.03em] text-text sm:text-3xl"
                 >
-                  Contact
+                  Contact Me
                 </h2>
               </div>
 
@@ -124,7 +122,7 @@ export default function ContactModal({ isOpen, onClose }) {
                 type="button"
                 onClick={onClose}
                 aria-label="Close dialog"
-                className="inline-flex items-center rounded-md px-2.5 py-1 font-mono text-xs text-text-muted transition-colors duration-150 hover:bg-surface-alt hover:text-text active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="inline-flex cursor-pointer items-center rounded-md px-2.5 py-1 font-mono text-xs text-text-muted transition-[transform,background-color,color] duration-150 hover:bg-surface-alt hover:text-text active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 Close
               </button>
@@ -144,7 +142,7 @@ export default function ContactModal({ isOpen, onClose }) {
               {/* Primary Contact: Email (Solid Accent) */}
               <a
                 href="mailto:workwithorjiemeka07@gmail.com"
-                className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-accent px-5 font-mono text-xs font-medium text-bg transition-[transform,opacity] duration-150 hover:opacity-90 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:text-sm"
+                className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-accent px-5 font-mono text-xs font-medium text-bg transition-[transform,opacity,filter] duration-150 hover:opacity-90 hover:brightness-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:text-sm"
               >
                 <span className="truncate">workwithorjiemeka07@gmail.com</span>
                 <span aria-hidden="true" className="text-xs">
@@ -160,7 +158,7 @@ export default function ContactModal({ isOpen, onClose }) {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-10 flex-1 items-center justify-center gap-1.5 rounded-lg border border-surface-alt bg-surface/60 px-3 font-mono text-xs font-medium text-text transition-[transform,border-color,background-color,color] duration-150 hover:border-accent-dim/50 hover:bg-surface-alt hover:text-accent active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:h-11 sm:text-sm"
+                    className="inline-flex h-10 flex-1 items-center justify-center gap-1.5 rounded-lg border border-surface-alt bg-surface/60 px-3 font-mono text-xs font-medium text-text transition-[transform,border-color,background-color,color,filter] duration-150 hover:border-accent-dim/50 hover:bg-surface-alt hover:text-accent hover:brightness-105 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:h-11 sm:text-sm"
                   >
                     <span>{link.label}</span>
                     <span
@@ -174,7 +172,7 @@ export default function ContactModal({ isOpen, onClose }) {
               </div>
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       )}
     </AnimatePresence>,
     document.body
