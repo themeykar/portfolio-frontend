@@ -19,13 +19,16 @@ export default function Hero() {
     reduceMotion
       ? {}
       : {
-          initial: { opacity: 0, y: 20 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.7, delay, ease: EASE },
-        };
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.7, delay, ease: EASE },
+      };
 
   return (
-    <section className="flex min-h-[100dvh] flex-col justify-center px-5 sm:px-8 md:px-12 lg:px-24">
+    <section
+      id="hero"
+      className="flex min-h-[100dvh] flex-col justify-center px-5 pt-16 sm:px-8 sm:pt-18 md:px-12 md:pt-0 lg:px-24"
+    >
       <div className="mx-auto w-full max-w-[1400px]">
 
         {/* ── Name ── */}
