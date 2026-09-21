@@ -82,6 +82,9 @@ export default function Navbar() {
     e.preventDefault();
     setIsMobileMenuOpen(false);
 
+    // Sync URL hash with navigated section (replaceState avoids polluting history)
+    history.replaceState(null, '', href);
+
     if (href === "#hero") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
@@ -95,6 +98,7 @@ export default function Navbar() {
 
   const handleBrandClick = () => {
     setIsMobileMenuOpen(false);
+    history.replaceState(null, '', '#hero');
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 

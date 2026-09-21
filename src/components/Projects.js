@@ -39,7 +39,7 @@ const PROJECTS_DATA = [
       "Resend",
       "Tailwind",
     ],
-    link: "https://eventrsvp-now.vercel.app",
+    link: "https://www.eventrsvp.site",
   },
   {
     category: "SAAS TOOL",
