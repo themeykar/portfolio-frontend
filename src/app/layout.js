@@ -15,8 +15,57 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata = {
-  title: "Meykar — Portfolio",
-  description: "Design & development portfolio",
+  metadataBase: new URL("https://josephorji.vercel.app"),
+  title: {
+    default: "Joseph Orji — Backend Engineer",
+    template: "%s | Joseph Orji",
+  },
+  description:
+    "Backend engineer building reliable systems, real-time architectures, and robust APIs.",
+  keywords: [
+    "Joseph Orji",
+    "backend engineer",
+    "Python developer",
+    "Django developer",
+    "Django REST Framework",
+    "PostgreSQL",
+    "Redis",
+    "portfolio",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Joseph Orji",
+    title: "Joseph Orji — Backend Engineer",
+    description:
+      "Backend engineer building reliable systems, real-time architectures, and robust APIs.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Joseph Orji — Backend Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Joseph Orji — Backend Engineer",
+    description:
+      "Backend engineer building reliable systems, real-time architectures, and robust APIs.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export const viewport = {
+  themeColor: "#05070b",
 };
 
 export default function RootLayout({ children }) {
